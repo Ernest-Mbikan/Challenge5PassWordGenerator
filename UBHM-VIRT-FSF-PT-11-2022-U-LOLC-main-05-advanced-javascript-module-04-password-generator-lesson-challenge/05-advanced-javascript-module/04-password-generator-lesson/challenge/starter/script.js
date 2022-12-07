@@ -90,6 +90,18 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  var length = parseInt(prompt("please enter password option"));
+  var hasSpecialCharacters = confirm("would you like special charachter in your password");
+ 
+  var options = {
+    length,
+    hasSpecialCharacters,
+    hasNumericCharacters,
+    hasLowerCasedCharacters,
+    hasUpperCasedCharacters
+  };
+  
+  return options;
 
 }
 

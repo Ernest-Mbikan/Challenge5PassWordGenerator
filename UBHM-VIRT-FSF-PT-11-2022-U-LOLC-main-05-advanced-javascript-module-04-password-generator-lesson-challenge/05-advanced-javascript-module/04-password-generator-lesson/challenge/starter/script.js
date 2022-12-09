@@ -1,4 +1,4 @@
-var   length = 10;
+var   Length = 10;
 
 var   CharOptionsArr = [];
 
@@ -93,18 +93,11 @@ var   upperCasedCharacters = [
   'Z'
 ];
 
-// Function to prompt user for password options
-function getPasswordOptions(
-  haslength,
-  hasSpecialCharacters,
-  hasnumericCharacters,
-  haslowerCasedCharacters,
-  hasupperCasedCharacters
-) {
-  {
+// Function to prompt user for password CharOptionsArr
+function getPasswordOptions(){
     CharOptionsArr= []; //resets choiceArr
-    length = parseInt(prompt("Enter the number of characters for your password. (10 - 64 characters)"));
-    if (isNaN(length)|| length < 10 || length > 64){
+    Length = parseInt(prompt("Enter the number of characters for your password. (10 - 64 characters)"));
+    if (isNaN(Length)|| Length < 10 || Length > 64){
       alert("Enter a number, 10 - 64. Please try again");
       return false; 
     }
@@ -121,32 +114,45 @@ function getPasswordOptions(
       CharOptionsArr = CharOptionsArr.concat(upperCasedCharacters);
     }
     return true;
-}
+  }
+
+
+    // Function for getting a random element from an array
+    
+  function getRandom(arr) {
+    var password = "";
+    for (var i = 1; i < Length; i++){
+        var randomindex = Math.floor(Math.random() * CharOptionsArr.length);
+        password += CharOptionsArr=[randomindex];
+  }
+  return password;
+
 }
 
-// Function for getting a random element from an array
-function getRandom(arr) {
+  // Function to generate password with user input
+  function generatePassword() {
+    var password = "";
+    for (var i = 1; i < Length; i++){
+        var randomindex = Math.floor(Math.random() * CharOptionsArr.length);
+        password += CharOptionsArr[randomindex];
 
-}
-
-// Function to generate password with user input
-function generatePassword() {
-    var options = getPasswordOptions();
-    var password = [];
+    }  
+    return password
   
-  
-  
-    return password.join("")
-
-}
+  }
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var possiblePassword = getPasswordOptions();
+
+  if (possiblePassword){
+    var password = generatePassword();
   var passwordText = document.querySelector('#password');
+  }
+  
 
   passwordText.value = password;
 }
